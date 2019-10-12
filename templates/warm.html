@@ -1,0 +1,102 @@
+{%extends "index.html" %}
+ 
+{% block mainbody %}
+
+{% load staticfiles %}
+<p><strong>热身活动：</strong></p>
+    <style type="text/css">
+        shiqiao{width:800px; height:150px; margin:50px auto; overflow: hidden;}
+        span {float:left;width:400px;position: absolute;
+            top: 150px;
+            left: 220px;}
+        .photo{float:right;width:400px}
+        photo img{display:block;width:100%}
+        photo img{ vertical-align:middle;}
+        
+    </style>
+    <div class="shiqiao">
+            <span>如右图所示，平静的水面上有一座石桥，桥孔看上去是圆形的。当水面上升时，看到桥孔的形状是下面图中的哪一幅。</span>
+            <div class="photo">
+                <img src="{% static "2.JPG" %}"/>
+            </div>
+   </div>
+    <p> <img src="{% static "1.JPG" %}" style="max-width:100%;"/> </p> 
+    <p>&emsp;&emsp;<strong>热身任务：</strong>用鼠标点击下方的“开始录音”按钮，然后对着麦克风一边想，一边说出你回答这道题目的思维过程（包括读题、判断、决策等所有思考活动）。说完之后，用鼠标点击下方的“结束按钮”。</p>
+<!--
+    <button type="button"><a href="/warm/">开始录音</a></button>
+-->
+<button id="recBtn" onclick="recordControll()">开始录音</button>
+
+<!-- jQuery -->
+<script src="{% static 'js\jquery-1.11.0.js' %}" type="text/javascript" charset="utf-8"></script>
+<!-- 录音插件 -->
+<script src="{% static 'Recorder-master/recorder.mp3.min.js' %}" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+
+    var recordFlag = 0; // 0准备录音，1录音中，2录音完毕
+        function recordControll(){
+            if(recordFlag == 0) {
+                document.getElementById("recBtn").innerHTML = "停止录音";
+                beginRecord();
+                recordFlag = 1;
+            } else if(recordFlag == 1) {
+                endRecord();
+                recordFlag = 2;
+            } 
+        }
+
+    //初始化Recorder
+    var rec=Recorder({type:"mp3",sampleRate:16000});
+        function beginRecord() {
+            rec.open(function(){
+            //start打开录音
+                rec.start();
+            },function(msg){
+                mui.toast("无法录音:"+msg);
+            });
+        }
+    
+    //结束录音
+    function endRecord() {
+        rec.stop(function(blob,duration){
+            //var res=URL.createObjectURL(blob);
+            console.log((window.URL||webkitURL).createObjectURL(blob),"时长:"+duration+"ms");
+            rec.close();//释放录音资源
+            //已经拿到blob文件对象想干嘛就干嘛：立即播放、上传
+
+            var form=new FormData();
+            form.append("upfile",blob,"warm.mp3"); //和普通form表单并无二致，后端接收到upfile参数的文件，文件名为recorder.mp3
+            console.log(form);
+            // 存储到服务器
+            $.ajax({
+                url:'/uploadWarm/',
+                type:'post',
+                contentType:false, //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
+                processData:false, //不要处理data，让xhr自动处理
+                data:form,
+                success:function(v){
+                    console.log("上传成功",v);
+                },
+                error:function(s){
+                    console.error("上传失败",s);
+                }
+            });
+
+            //立即播放例子
+            /*
+            var audio=document.createElement("audio");
+            audio.controls=true;
+            document.body.appendChild(audio);
+            audio.src=(window.URL||webkitURL).createObjectURL(blob);
+            audio.play();
+            */
+        });
+    }
+
+
+</script>
+<button type="button"><a href="/five/">下一步</a></button> 
+
+{% endblock %}

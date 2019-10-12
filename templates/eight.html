@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>华东师范大学课题组</title>
+<style type="text/css">
+        .border {width:800px; height:150px; margin:50px auto;}
+        .luyin {float:left;width:380px; border:1px dashed black;padding:20px;}
+        .search {float:right;width:300px; height:300px;border:1px dashed black;padding:20px;}
+        a {
+            text-decoration:none;
+            color:black;
+        }
+        button {
+            background-color:lightsalmon;
+        }
+</style>
+</head>
+<body>
+    <div class="border">
+    {% load staticfiles %}
+        <div class="luyin">
+                <div style="width:380px; height:400px; margin:1px auto;background: rgb(220,220,220);">
+                    <div style="font-size:20px; font-weight:200;position: relative;top:200px;left: 80px;">
+                    显示任务二的情境材料
+                    </div>
+                </div>
+                <div style="width:380px; height:50px; margin:1px auto;background:rgb(192,192,192);font-size:20px; font-weight:200;">
+                    <div style="font-size:20px; font-weight:200;position: relative;top:10px;left: 80px;">
+                    显示任务二的要求
+                    </div>    
+                </div>
+            <button type="button"><a href="/nine/">下一步</a></button>
+        </div>
+        <div class="search">
+            <p>&emsp;&emsp;在下面“资料搜索”框中输入关键词“地球”，然后点击🔍，查到的资料就会显示在当前这个框内。</p>
+            <p>&emsp;&emsp;在正式测试时，如果搜索不到信息，请举手咨询老师。</p>
+            <p>&emsp;&emsp;搜索体验结束后，请点击“下一步”按钮。</p>
+        </div>
+    </div>
+</body>
+</html>
