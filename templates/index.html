@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>华东师范大学课题组</title>
+<style>
+        .border {
+            margin:auto;
+            width:800px;
+            border:1px dashed black;
+            padding:20px;
+        }
+        a {
+            text-decoration:none;
+            color:black;
+        }
+        button {
+            background-color:lightsalmon;
+        }
+        </style>
+</head>
+<body>
+    <div class="border">
+        {% block mainbody %}
+            <p>同学，你好!</p>
+            <p>&emsp;&emsp;本测试包括两项任务:</p>
+            <p>&emsp;&emsp;任务一是想了解当你遇到具体真实地理问题情境时，你会产生什么疑问或问题，以及你是如何产生这 种疑问或问题的。</p>
+            <p>&emsp;&emsp;任务二是给你一个具体的地理问题，想了解你是如何解决这个问题的。</p>
+            <p>&emsp;&emsp;测试采用匿名方式，所有信息仅用于学术研究，请放心完成任务。</p>
+            <p align="right">华东师范大学课题组&emsp;&emsp;</p><br>
+            
+            
+            <button type="button"><a href="/info/">下一步</a></button>
+            
+        {% endblock %}
+    </div>
+    
+</body>
+</html>

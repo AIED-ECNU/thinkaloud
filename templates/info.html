@@ -1,0 +1,49 @@
+{%extends "index.html" %}
+ 
+{% block mainbody %}
+<form action="/intro/" method="get">
+    <p>请填写以下基本信息:</p>
+    <table cellpadding="10">
+        <tr>
+            <td>编&emsp;&emsp;号</td>
+            <td><input type="text" name="id""></td>
+        </tr>
+        <tr>
+            <td>性&emsp;&emsp;别</td>
+            <td><input type="radio" name="gender" value="male">男&emsp;
+                <input type="radio" name="gender" value="female">女    
+            </td>
+        </tr>
+        <tr>
+            <td>学&emsp;&emsp;校</td>
+            <td><input type="text" name="school"></td>
+        </tr>
+        <tr>
+            <td>父亲学历</td>
+            <td><input type="text" name="f_education"></td>
+        </tr>
+        <tr>
+            <td>母亲学历</td>
+            <td><input type="text" name="m_education"></td>
+        </tr>
+        <tr>
+            <td>父亲职业</td>
+            <td><input type="text" name="f_career"></td>
+        </tr>
+        <tr>
+            <td>母亲职业</td>
+            <td><input type="text" name="m_career"></td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/intro/">
+                    <input type= "submit" name= "submit_info" value="下一步">
+                </a>
+                
+            </td>
+            
+        </tr>
+    </table>              
+</form>
+
+{% endblock %}
