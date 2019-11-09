@@ -10,12 +10,13 @@
         <p>如右图所示，平静的 水面上有一座石桥，桥孔看上去是圆形的。当水面上升时，看到桥孔的形状是下面图中的哪一幅。</p>
     </div>
     <div class="pic" style="float: left;">
-        <img src="{% static 'img/warm_02.jpg' %}" >
+        <img src="/static/img/warm_02.jpg" >
+        <!--<img src="{% static 'img\warm_02.jpg' %}" >-->
     </div>
 </div>
 
 <div class="mid" >
-    <img src="{% static 'img/warm_01.jpg' %}" >
+    <img src="{% static 'img\warm_01.jpg' %}" >
 </div>
 <div class="bottom">
     <p><span>热身任务：</span>用鼠标点击下方的 开始录音 按钮，然后对着麦克风一边想，一边说出你回答这道题目的思维过程（包括读题、判断、决策等所有思考活动）。说完之后，用鼠标点击下方的" 结束按钮 "。</p>
@@ -35,6 +36,8 @@
     function recordControll(){
         if(recordFlag == 0) {
             document.getElementById("recBtn").innerHTML = "停止录音";
+            document.getElementById("recBtn").style.background=' lightskyblue';
+            //document.getElementById("recBtn").style.color='white';
             beginRecord();
             recordFlag = 1;
         } else if(recordFlag == 1) {

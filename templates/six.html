@@ -2,7 +2,7 @@
 
 {% block mainbody %}
 {% load staticfiles %}
-<p> <img src="{% static "img\six.jpeg" %}" style="max-width:50%;;position: relative;
+<p> <img src="/static/img/six.jpeg" style="max-width:50%;;position: relative;
     top: 0px;left:200px;"/> </p> 
 <p>&emsp;&emsp;有专家对分布在内蒙古乌兰哈达地区的火山群进行考察。该地有一座新的火山，距今约四五千年。专家想这座火山活动以后会给当地带来一系列气候、地理、环境的变化，同时也会影响一些生物的变化。当时就想了解一下周围的环境状况，就问了当地人，当地人告诉专家在察右后旗二榆树沟村的村口附近有棵大树。专家就去看了看，树的确很大，经测量了解到树干高达16米、直径1.58米、周长4.78米，树冠28米，覆盖面积580平方米。经鉴定，树龄将近900年。</p>
 <p>&emsp;&emsp;<strong>任务一：</strong>结合材料所提供的信息，你会产生什么问题或疑问？并说出你的思考过程。</p>
@@ -22,6 +22,7 @@
     function recordControll(){
         if(recordFlag == 0) {
             document.getElementById("recBtn").innerHTML = "停止录音";
+            document.getElementById("recBtn").style.background=' lightskyblue';
             beginRecord();
             recordFlag = 1;
         } else if(recordFlag == 1) {

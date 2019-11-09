@@ -17,6 +17,8 @@ Including another URLconf
 from django.conf.urls import url
 from myapp import views
 from django.contrib import admin
+from django.views import static 
+from django.conf import settings 
 
  
 urlpatterns = [
@@ -37,4 +39,8 @@ urlpatterns = [
     url(r'^nine/',views.nine),
     url(r'^ten/',views.ten),
     url(r'^final/',views.final),
+    url(r'^static/(?P<path>.*)$', static.serve,
+      {'document_root': settings.STATIC_ROOT}, name='static'),
+    #url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    #url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 ]

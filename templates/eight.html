@@ -33,6 +33,7 @@
                     </div>    
                 </div>
                 <button id="recBtn" onclick="recordControll()">开始录音</button>
+                <button type="button"><a href="/nine/">下一步</a></button>
         </div>
         <div class="search">
             <div class="res-word">
@@ -46,7 +47,7 @@
             <span>资料搜索：</span>
             <input type="text" name="searchKey" id="searchKey">
             <button id="searchBtn">🔍</button>
-            <button type="button"><a href="/nine/">下一步</a></button>
+            
             
         </div>
     </div>
@@ -99,6 +100,8 @@
     function recordControll(){
         if(recordFlag == 0) {
             document.getElementById("recBtn").innerHTML = "停止录音";
+            document.getElementById("recBtn").style.background=' lightskyblue';
+            //document.getElementById("recBtn").style.color='white';
             beginRecord();
             recordFlag = 1;
         } else if(recordFlag == 1) {
